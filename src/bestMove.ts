@@ -1,5 +1,5 @@
 import { GameState, getGameState } from "./gameState";
-import { TicTacToeStatus, getTicTacToeStatus } from "./ticTacToeStatus";
+import { TicTacToeStatus, getTicTacToeStatus, isGameOver } from "./ticTacToeStatus";
 import minimax from "./minimax";
 
 type Move = {
@@ -30,10 +30,6 @@ const getBestMove = (position: string, depth: number): [Move, number] => {
 const isValid = (position: string): boolean => {
   const regex = /^[12] [0-9] (?:[012]{9}\/){8}[012]{9}$/;
   return regex.test(position);
-};
-
-const isGameOver = (gameState: GameState): boolean => {
-  return getTicTacToeStatus(gameState.board.big) !== 0;
 };
 
 const getResult = (gameState: GameState): string => {

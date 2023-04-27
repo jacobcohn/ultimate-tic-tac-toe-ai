@@ -1,3 +1,5 @@
+import { GameState } from "./gameState";
+
 type TicTacToeStatus = 0 | 1 | 2 | 3;
 
 const getTicTacToeStatus = (board: number[]): TicTacToeStatus => {
@@ -52,4 +54,8 @@ const getTicTacToeStatus = (board: number[]): TicTacToeStatus => {
   return 3;
 };
 
-export { TicTacToeStatus, getTicTacToeStatus };
+const isGameOver = (gameState: GameState): boolean => {
+  return getTicTacToeStatus(gameState.board.big) !== 0;
+};
+
+export { TicTacToeStatus, getTicTacToeStatus, isGameOver };
