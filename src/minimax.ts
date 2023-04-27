@@ -1,5 +1,7 @@
 import { Move } from "./bestMove";
 import { GameState } from "./gameState";
+import { isGameOver } from "./ticTacToeStatus";
+import { Child, getChildren } from "./children";
 
 const minimax = (
   move: Move,
@@ -10,12 +12,47 @@ const minimax = (
   maximizingPlayer: boolean,
   isFirst: boolean
 ): [Move, number] => {
-  console.log(move, gameState, depth, alpha, beta, maximizingPlayer, isFirst);
+  if (depth === 0 || isGameOver(gameState)) return [move, 0]; // getStaticEvaluation(gameState) ];
 
-  const m1 = { big: 0, small: 0 };
-  const e1 = 5;
+  if (maximizingPlayer) {
+    let maxEvaluation: number = Number.NEGATIVE_INFINITY;
 
-  return [m1, e1];
+    const children: Child[] = getChildren(gameState);
+    for (const child of children) {
+      if (move === null) move = child.move;
+
+      const [, evaluation] = minimax(move, child.gameState, depth - 1, alpha, beta, false, false);
+
+      if (evaluation > maxEvaluation) {
+        if (isFirst) move = child.move;
+        maxEvaluation = evaluation;
+      }
+
+      alpha = Math.max(alpha, evaluation);
+      if (beta <= alpha) break;
+    }
+
+    return [move, maxEvaluation];
+  } else {
+    let minEvaluation: number = Number.POSITIVE_INFINITY;
+
+    const children: Child[] = getChildren(gameState);
+    for (const child of children) {
+      if (move === null) move = child.move;
+
+      const [, evaluation] = minimax(move, child.gameState, depth - 1, alpha, beta, true, false);
+
+      if (evaluation < minEvaluation) {
+        if (isFirst) move = child.move;
+        minEvaluation = evaluation;
+      }
+
+      beta = Math.min(beta, evaluation);
+      if (alpha >= beta) break;
+    }
+
+    return [move, minEvaluation];
+  }
 };
 
 export default minimax;

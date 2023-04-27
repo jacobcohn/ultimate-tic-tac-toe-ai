@@ -12,8 +12,7 @@ type GameState = {
 };
 
 const getGameState = (position: string): GameState => {
-  const [playerTurnStr, legalBoardsStr, boardStr]: string[] =
-    position.split(" ");
+  const [playerTurnStr, legalBoardsStr, boardStr]: string[] = position.split(" ");
 
   const playerTurn: number = getPlayerTurn(playerTurnStr);
   const board: Board = getBoard(boardStr);
@@ -34,9 +33,7 @@ const getBoard = (board: string): Board => {
 };
 
 const getSmallBoard = (smallBoard: string): number[][] => {
-  return smallBoard
-    .split("/")
-    .map((str) => str.split("").map((char) => parseInt(char)));
+  return smallBoard.split("/").map((str) => str.split("").map((char) => parseInt(char)));
 };
 
 const getBigBoard = (smallBoard: number[][]): number[] => {

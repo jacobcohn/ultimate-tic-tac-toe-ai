@@ -19,9 +19,7 @@ const getBoard = (board) => {
     return { small, big };
 };
 const getSmallBoard = (smallBoard) => {
-    return smallBoard
-        .split("/")
-        .map((str) => str.split("").map((char) => parseInt(char)));
+    return smallBoard.split("/").map((str) => str.split("").map((char) => parseInt(char)));
 };
 const getBigBoard = (smallBoard) => {
     return smallBoard.map((board) => (0, ticTacToeStatus_1.getTicTacToeStatus)(board));

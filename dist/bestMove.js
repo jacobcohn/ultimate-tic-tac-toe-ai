@@ -8,7 +8,7 @@ const getBestMove = (position, depth) => {
     if (!isValid(position))
         throw new Error("invalid position");
     const gameState = (0, gameState_1.getGameState)(position);
-    if (isGameOver(gameState))
+    if ((0, ticTacToeStatus_1.isGameOver)(gameState))
         throw new Error(getResult(gameState));
     const maximizingPlayer = gameState.playerTurn === 1;
     const [move, evaluation] = (0, minimax_1.default)(null, gameState, depth, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, maximizingPlayer, true);
@@ -18,9 +18,6 @@ exports.getBestMove = getBestMove;
 const isValid = (position) => {
     const regex = /^[12] [0-9] (?:[012]{9}\/){8}[012]{9}$/;
     return regex.test(position);
-};
-const isGameOver = (gameState) => {
-    return (0, ticTacToeStatus_1.getTicTacToeStatus)(gameState.board.big) !== 0;
 };
 const getResult = (gameState) => {
     const numToString = {
