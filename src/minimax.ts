@@ -1,7 +1,7 @@
 import { Move } from "./bestMove";
 import { GameState } from "./gameState";
 import { isGameOver } from "./ticTacToeStatus";
-import getStaticEvaluation from "./staticEvaluation";
+import { getStaticEvaluation } from "./staticEvaluation";
 import { Child, getChildren } from "./children";
 
 const minimax = (
@@ -13,7 +13,7 @@ const minimax = (
   maximizingPlayer: boolean,
   isFirst: boolean
 ): [Move, number] => {
-  if (depth === 0 || isGameOver(gameState)) return [move, getStaticEvaluation(gameState) ];
+  if (depth === 0 || isGameOver(gameState)) return [move, getStaticEvaluation(gameState)];
 
   if (maximizingPlayer) {
     let maxEvaluation: number = Number.NEGATIVE_INFINITY;

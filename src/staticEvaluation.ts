@@ -1,23 +1,22 @@
 import { GameState } from "./gameState";
-import getWeight from "./weight";
+import getWeights from "./weights";
 import getEvaluation from "./evaluation";
+
+type ticTacToeSpot = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+const ticTacToeSpots: ticTacToeSpot[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 const getStaticEvaluation = (gameState: GameState): number => {
   let staticEvaluation = 0;
 
-  for (let index = 0; index < gameState.board.big.length; index++) {
-    const weight1: number = getWeight(gameState.board.big, index, 1);
-    const weight2: number = getWeight(gameState.board.big, index, 2);
-    const evaluation1: number = getEvaluation(gameState.board.small[index], index, 1);
-    const evaluation2: number = getEvaluation(gameState.board.small[index], index, 2);
+  ticTacToeSpots.forEach((index) => {
+    const [weight1, weight2]: number[] = getWeights(gameState.board.big, index);
+    const [evaluation1, evaluation2]: number[] = getEvaluation(gameState.board.small[index], index, 1, weight1 === 0);
 
     staticEvaluation += weight1 * evaluation1;
     staticEvaluation -= weight2 * evaluation2;
-  };
+  });
 
   return staticEvaluation;
 };
 
-
-
-export default getStaticEvaluation;
+export { ticTacToeSpot, getStaticEvaluation };
