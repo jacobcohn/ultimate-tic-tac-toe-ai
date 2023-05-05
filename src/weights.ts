@@ -1,7 +1,7 @@
 import { ticTacToeSpot } from "./staticEvaluation";
 import getPlayerCounts from "./playerCounts";
 
-const combinationWeights = [1, 3, 12];
+const combinationWeights = [1, 4, 12];
 const possibleCombinationsByIndex = {
   0: [
     [0, 1, 2],
