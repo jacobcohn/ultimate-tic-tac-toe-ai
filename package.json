@@ -1,6 +1,17 @@
 {
   "name": "ultimate-tic-tac-toe-ai",
   "version": "1.0.0",
+  "description": "finds the best move in any ultimate tic tac toe game",
+  "main": "bestMove.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacobcohn/ultimate-tic-tac-toe-ai.git"
+  },
+  "keywords": [
+    "Ultimate Tic Tac Toe"
+  ],
+  "author": "Jacob Cohn",
+  "license": "ISC",
   "scripts": {
     "dev": "tsc --watch",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
