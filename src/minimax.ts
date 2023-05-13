@@ -4,7 +4,7 @@ import { isGameOver } from "./ticTacToeStatus";
 import { getStaticEvaluation } from "./staticEvaluation";
 import { Child, getChildren } from "./children";
 
-const minimax = (gameState: GameState, numMilliseconds: number): [ Move, number ] => {
+const minimax = (gameState: GameState, numMilliseconds: number): [ Move, number, number ] => {
   let depth = 0;
   let move: Move, evaluation: number = null;
   const startTime = Date.now();
@@ -24,7 +24,7 @@ const minimax = (gameState: GameState, numMilliseconds: number): [ Move, number 
     );
   };
 
-  return [ move, evaluation ];
+  return [ move, evaluation, depth ];
 };
 
 const isPassedTime = (startTime: number, numMilliseconds: number): boolean => {

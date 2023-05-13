@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const playerCounts_1 = require("./playerCounts");
-const combinationWeights = [[1], [3], [8, 3]];
+const combinationWeights = [[1], [2], [8, 2]];
 const combinations = [
     [0, 1, 2],
     [3, 4, 5],

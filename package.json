@@ -5,7 +5,7 @@
     "dev": "tsc --watch",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "start": "npx tsc && node dist/index.js"
+    "start": "npx tsc"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.59.1",

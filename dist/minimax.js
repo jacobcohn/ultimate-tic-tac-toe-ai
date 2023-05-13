@@ -14,7 +14,7 @@ const minimax = (gameState, numMilliseconds) => {
         [move, evaluation] = minimaxHelper(null, gameState, depth, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, gameState.playerTurn === 1, true);
     }
     ;
-    return [move, evaluation];
+    return [move, evaluation, depth];
 };
 const isPassedTime = (startTime, numMilliseconds) => {
     return numMilliseconds < Date.now() - startTime;

@@ -1,6 +1,6 @@
 import getPlayerCounts from "./playerCounts";
 
-const combinationWeights = [[1], [3], [8, 3]];
+const combinationWeights = [[1], [2], [8, 2]];
 const combinations = [
   [0, 1, 2],
   [3, 4, 5],

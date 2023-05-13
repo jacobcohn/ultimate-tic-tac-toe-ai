@@ -7,7 +7,7 @@ type Move = {
   small: number;
 };
 
-const getBestMove = (position: string, numMilliseconds: number): [Move, number] => {
+const getBestMove = (position: string, numMilliseconds: number): [Move, number, number] => {
   if (!isValid(position)) throw new Error("invalid position");
 
   const gameState: GameState = getGameState(position);
