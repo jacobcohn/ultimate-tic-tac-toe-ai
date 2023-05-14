@@ -25,7 +25,7 @@ About a year ago, I created a an Ultimate Tic Tac Toe app with React for two peo
 Use a package manager of your choice to install this package. For example, you can use npm.
 
 ```bash
-npm install ultimate-tic-tac-toe
+npm install @jacobcohn/ultimate-tic-tac-toe-ai
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ The position string contains 3 components. The first number is the current playe
 Then, you give the algorithm a number of milliseconds to search for. I recommend 500 milliseconds as it is quick, yet is able to search deep enough to defeat pretty much any human.
 
 ```javascript
-import { getBestMove } from "ulimate-tic-tac-toe-ai";
+import { getBestMove } from "@jacobcohn/ultimate-tic-tac-toe-ai";
 
 const position = "1 9 000000000/000000000/000000000/000000000/000000000/000000000/000000000/000000000/000000000";
 const numMilliseconds = 500;
