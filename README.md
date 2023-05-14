@@ -44,7 +44,7 @@ const numMilliseconds = 500;
 const [ { big, small }, evaluation, depth ] = getBestMove(position, numMilliseconds);
 ```
 
-The move is returned in the form of a number for the big board position and a number for small board position. These numbers are both 0-8, which are pots on the tic tac toe board from left to right, then up to down.
+The move is returned in the form of a number for the big board position and a number for small board position. These numbers are both 0-8, which correspond to spots on the tic tac toe board from left to right, then up to down.
 
 ## Contributing
 

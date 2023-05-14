@@ -1,6 +1,6 @@
 {
   "name": "@jacobcohn/ultimate-tic-tac-toe-ai",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "finds the best move in any ultimate tic tac toe game",
   "main": "dist/bestMove.js",
   "repository": {
