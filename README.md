@@ -1,28 +1,30 @@
 # Ultimate Tic Tac Toe AI
 
-Ultimate Tic Tac Toe AI is a NodeJS Module written in TypeScript that gives the best move for any ultimate tic tac toe position.
+Ultimate Tic Tac Toe AI is a TypeScript/Node.js package that calculates strong moves for any Ultimate Tic Tac Toe position.
 
-## Why did I create this project?
+## Why I Created This Project
 
-I am currently a senior in high school and enrolled in a dual credit Data Structures and Algorithms class. My teacher, Mr. Tiveron, assigned a fourth quarter project where we could create any project that inspired us. I was very intrigued by a YouTube video by Sebastian Lague on creating a Chess AI. And, I have always enjoyed playing Ultimate Tic Tac Toe with my dad. So, I put my abilities towards creating an AI for my old favorite game, Ultimate Tic Tac Toe.
+I created this project as part of my fourth-quarter project for my dual-credit Data Structures and Algorithms class. My teacher, Mr. Tiveron, let us choose any project that inspired us.
 
-## How did I create this project?
+I was interested in a Sebastian Lague YouTube video about creating a chess AI, and I have always enjoyed playing Ultimate Tic Tac Toe with my dad. I decided to combine those interests by building an AI for one of my favorite games.
 
-I created this project in TypeScript using the minimax algorithm with alpha beta pruning. 
+## How It Works
 
-I created my heuristic function by giving defining features and assigning them weights. Each small board has features for both X and O which counts how many possible combinations there are in the big board and how close they are to being complete combinations. Additionally, they have feautures for how many possible combinations there are inside each small board and how close they are to completion for both X and O. The weights are arbitrary numbers that give more value to how close the combinations are to completion. 
+This project uses the minimax algorithm with alpha-beta pruning to search for the best move.
 
-All of the positions need to be searched at a certain depth for the best move to be valid. And, the bigger the depth, the better the move would be. But, there is no way to know how long a certain depth will take. My solution to this problem was to find the best move at depth 1, and then depth 2, and so on. Once a certain time has passed, then the algorithm would return the best move for the depth it was currently searching through. This allows programmers to have the algorithm return a best move in a relatively defined amount of time.
+The AI evaluates positions using a heuristic function. The heuristic looks at important features for both X and O, including possible winning combinations on the large board and possible winning combinations inside each small board. It also considers how close each player is to completing those combinations. These features are assigned weights so that stronger threats and near-completed lines are valued more heavily.
 
-## Where can you play against it?
+Because deeper searches usually produce better moves, the algorithm uses iterative deepening. It searches depth 1 first, then depth 2, and continues increasing the depth until the given time limit is reached. When time runs out, it returns the best move found from the deepest completed search. This lets the caller control roughly how long the AI thinks before returning a move.
 
-About a year ago, I created a an Ultimate Tic Tac Toe app with React for two people to play against each other on the same device. I revamped this code so that you can play my AI. I did not want to spend a lot of time implementing a new GUI, so do not be surprised if you come across a bug. You can only play as X as I did not want to spend a lot of time on the GUI. Sadly, you will lose unless you are using your own bot against it. It is set to 500 milliseconds.
+## Play Against It
 
-[Ultimate Tic Tac Toe AI Implementation](https://jacobcohn.github.io/ultimate-tic-tac-toe-ai-implementation/)
+I previously built an Ultimate Tic Tac Toe app in React for two players on the same device. I updated that project so you can play against this AI. The GUI was not the main focus of this project, so there may still be some bugs. Currently, you can only play as X, and the AI is set to think for 500 milliseconds per move.
+
+[Play Ultimate Tic Tac Toe AI](https://jacobcohn.github.io/ultimate-tic-tac-toe-ai-implementation/)
 
 ## Installation
 
-Use a package manager of your choice to install this package. For example, you can use npm.
+Install the package using npm:
 
 ```bash
 npm install @jacobcohn/ultimate-tic-tac-toe-ai
@@ -30,26 +32,44 @@ npm install @jacobcohn/ultimate-tic-tac-toe-ai
 
 ## Usage
 
-The position string contains 3 components. The first number is the current player. 1 corresponds to X and 2 corresponds to O. The second number is the current big board that the player can play in. 0-8 are the all the spots on the tic tac toe board from left to right, then up to down. 9 corresponds to any open board. Finally, the long sequence of digits and slashes is the board. 0 corresponds to an empty spot. 1 corresponds to X and 2 corresponds to O. Each slash is to separate each small board from each other.
-
-Then, you give the algorithm a number of milliseconds to search for. I recommend 500 milliseconds as it is quick, yet is able to search deep enough to defeat pretty much any human.
-
 ```javascript
 import { getBestMove } from "@jacobcohn/ultimate-tic-tac-toe-ai";
 
 const position = "1 9 000000000/000000000/000000000/000000000/000000000/000000000/000000000/000000000/000000000";
 const numMilliseconds = 500;
 
-// returns the best move (big and small) with its evaluation and depth
-const [ { big, small }, evaluation, depth ] = getBestMove(position, numMilliseconds);
+// Returns the best move, its evaluation, and the depth searched.
+const [{ big, small }, evaluation, depth] = getBestMove(position, numMilliseconds);
 ```
 
-The move is returned in the form of a number for the big board position and a number for small board position. These numbers are both 0-8, which correspond to spots on the tic tac toe board from left to right, then up to down.
+The position string has three parts:
+
+1. **Current player**: `1` for X, `2` for O.
+2. **Current big board**: `0` through `8` indicate the required small board. `9` means the player can move in any open board.
+3. **Board state**: nine small boards separated by slashes. Inside each small board, `0` is empty, `1` is X, and `2` is O.
+
+Board indexes go from left to right, then top to bottom:
+
+```text
+0 1 2
+3 4 5
+6 7 8
+```
+
+The returned move contains:
+
+- `big`: the small board to play in
+- `small`: the square to play inside that small board
+- `evaluation`: the AI's evaluation of the move
+- `depth`: the search depth reached
+
+I recommend using `500` milliseconds as the search time. It is quick while still being strong enough to beat most human players.
 
 ## Contributing
 
-Anyone can look through the code and see how it was written. If you do want to add to it, I only request that you send me an email on what you are adding as I am interested. My personal email is in my GitHub Profile.
+Anyone is welcome to look through the code and see how it works. If you would like to contribute, please send me an email explaining what you would like to add. My email is available on my GitHub profile.
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
